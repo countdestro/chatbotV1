@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Plus, TrendingUp, Clock, Star, Flame, HeartPulse, Swords, Sparkles } from 'lucide-react';
+import { Plus, TrendingUp, Clock, Star, HeartPulse, Brain, Sparkles } from 'lucide-react';
 import { Persona } from '../types';
 import { CharacterCard } from './CharacterCard';
 
@@ -12,13 +12,12 @@ interface ExploreHubProps {
 }
 
 type SortMode = 'trending' | 'new' | 'top' | 'popular';
-type CategoryFilter = 'all' | 'cbt' | 'nsfw' | 'rpg' | 'fantasy' | 'romance';
+type CategoryFilter = 'all' | 'cbt' | 'anxiety' | 'stress' | 'mindfulness';
 
 export const ExploreHub: React.FC<ExploreHubProps> = ({
   personas,
   onSelectPersona,
   onOpenCreateModal,
-  nsfwEnabled,
   searchQuery,
 }) => {
   const [sortMode, setSortMode] = useState<SortMode>('trending');
@@ -26,13 +25,13 @@ export const ExploreHub: React.FC<ExploreHubProps> = ({
 
   const filteredPersonas = useMemo(() => {
     let result = personas.filter(p => {
-      if (!nsfwEnabled && p.is_nsfw) return false;
+      // Never show NSFW personas
+      if (p.is_nsfw) return false;
 
       if (categoryFilter === 'cbt') return p.is_cbt;
-      if (categoryFilter === 'nsfw') return p.is_nsfw;
-      if (categoryFilter === 'rpg') return p.tags.some(t => ['RPG', 'Cyberpunk', 'Action', '🎲 RPG', '🎮 Cyberpunk'].includes(t));
-      if (categoryFilter === 'fantasy') return p.tags.some(t => ['Fantasy', 'High Fantasy', '🔮 High Fantasy', '🌙 Fantasy'].includes(t));
-      if (categoryFilter === 'romance') return p.tags.some(t => ['Romance', 'Slowburn', '❤️‍🩹 Romance', '✨ Slowburn'].includes(t));
+      if (categoryFilter === 'anxiety') return p.tags.some(t => t.toLowerCase().includes('anxiety') || t.toLowerCase().includes('cbt'));
+      if (categoryFilter === 'stress') return p.tags.some(t => t.toLowerCase().includes('stress') || t.toLowerCase().includes('burnout'));
+      if (categoryFilter === 'mindfulness') return p.tags.some(t => t.toLowerCase().includes('mindful') || t.toLowerCase().includes('wellness'));
 
       return true;
     });
@@ -54,46 +53,60 @@ export const ExploreHub: React.FC<ExploreHubProps> = ({
     }
 
     return result;
-  }, [personas, searchQuery, categoryFilter, nsfwEnabled, sortMode]);
+  }, [personas, searchQuery, categoryFilter, sortMode]);
 
   return (
     <div className="explore-container">
-      {/* Horizontal Tags Scroll — Janitor AI style */}
+      {/* Hero section */}
+      <div className="explore-hero">
+        <Brain size={32} className="explore-hero-icon" />
+        <h1 className="explore-hero-title">Mental Wellness Companions</h1>
+        <p className="explore-hero-subtitle">
+          Evidence-based AI therapy companions trained in CBT, mindfulness, and emotional support.
+          A safe space to explore your thoughts and build resilience.
+        </p>
+        <p className="explore-disclaimer">
+          ⚠️ These AI companions are supportive tools — not a substitute for licensed mental health care.
+          If you're in crisis, please contact the <strong>988 Suicide & Crisis Lifeline</strong> or text HOME to <strong>741741</strong>.
+        </p>
+      </div>
+
+      {/* Horizontal Category Filters */}
       <div className="tags-scroll-wrap">
         <button
           className={`tag-pill ${categoryFilter === 'all' ? 'active' : ''}`}
           onClick={() => setCategoryFilter('all')}
         >
-          <Sparkles size={13} style={{ display: 'inline', marginRight: '4px' }} /> All
+          <Sparkles size={13} style={{ display: 'inline', marginRight: '4px' }} /> All Companions
         </button>
         <button
           className={`tag-pill ${categoryFilter === 'cbt' ? 'active' : ''}`}
           onClick={() => setCategoryFilter('cbt')}
           style={{ borderColor: 'rgba(16, 185, 129, 0.35)' }}
         >
-          <HeartPulse size={13} style={{ display: 'inline', marginRight: '4px' }} /> Pure-O / ERP Support
+          <HeartPulse size={13} style={{ display: 'inline', marginRight: '4px' }} /> CBT / ERP
         </button>
         <button
-          className={`tag-pill ${categoryFilter === 'rpg' ? 'active' : ''}`}
-          onClick={() => setCategoryFilter('rpg')}
+          className={`tag-pill ${categoryFilter === 'anxiety' ? 'active' : ''}`}
+          onClick={() => setCategoryFilter('anxiety')}
         >
-          <Swords size={13} style={{ display: 'inline', marginRight: '4px' }} /> RPG &amp; Action
+          <Brain size={13} style={{ display: 'inline', marginRight: '4px' }} /> Anxiety & OCD
         </button>
         <button
-          className={`tag-pill ${categoryFilter === 'fantasy' ? 'active' : ''}`}
-          onClick={() => setCategoryFilter('fantasy')}
+          className={`tag-pill ${categoryFilter === 'stress' ? 'active' : ''}`}
+          onClick={() => setCategoryFilter('stress')}
         >
-          <Star size={13} style={{ display: 'inline', marginRight: '4px' }} /> Fantasy
+          Stress & Burnout
         </button>
         <button
-          className={`tag-pill ${categoryFilter === 'romance' ? 'active' : ''}`}
-          onClick={() => setCategoryFilter('romance')}
+          className={`tag-pill ${categoryFilter === 'mindfulness' ? 'active' : ''}`}
+          onClick={() => setCategoryFilter('mindfulness')}
         >
-          Romance
+          Mindfulness
         </button>
       </div>
 
-      {/* Filter Row — Sort + Stats (Janitor AI secondary filter bar) */}
+      {/* Filter Row */}
       <div className="filter-row-bar">
         <div className="filter-left-controls">
           <div className="filter-btn-group">
@@ -113,19 +126,20 @@ export const ExploreHub: React.FC<ExploreHubProps> = ({
         </div>
 
         <div className="filter-right-stats">
-          <span>{filteredPersonas.length} characters</span>
+          <span>{filteredPersonas.length} companions</span>
           <button className="nav-btn" onClick={onOpenCreateModal} style={{ padding: '0.3rem 0.65rem', fontSize: '0.78rem' }}>
-            <Plus size={13} /> Create
+            <Plus size={13} /> New
           </button>
         </div>
       </div>
 
-      {/* Character Grid */}
+      {/* Companion Grid */}
       {filteredPersonas.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '4rem 1rem', color: 'var(--text-muted)' }}>
-          <p style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>No characters found.</p>
+          <Brain size={40} style={{ margin: '0 auto 1rem', opacity: 0.3 }} />
+          <p style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>No companions found.</p>
           <button className="nav-btn nav-btn-glow" onClick={onOpenCreateModal} style={{ margin: '0 auto' }}>
-            <Plus size={15} /> Create New Character
+            <Plus size={15} /> Create New Companion
           </button>
         </div>
       ) : (

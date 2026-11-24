@@ -82,8 +82,8 @@ export const ChatScreen: React.FC<ChatScreenProps> = ({
   const streamingTextRef = useRef('');
   const stickToBottomRef = useRef(true);
 
-  // Background: prefer custom URL > persona background_url > persona avatar_url
-  const bgImageSrc = settings.customBgUrl || persona.background_url || persona.avatar_url;
+  // Background: no image bg for professional look — use custom URL only if set
+  const bgImageSrc = settings.customBgUrl || null;
   // Avatar shown in chat bubbles
   const chatAvatarSrc = persona.avatar_url;
 
@@ -411,16 +411,18 @@ export const ChatScreen: React.FC<ChatScreenProps> = ({
 
   return (
     <div className="janitor-chat-screen-wrap" onClick={() => setShowMenuPopover(false)}>
-      {/* Background Image Layer */}
-      <div
-        className="janitor-bg-image-layer"
-        style={{
-          opacity: (settings.bgOpacity ?? 15) / 100,
-          filter: `blur(${settings.bgBlur ?? 0}px)`
-        }}
-      >
-        <img src={bgImageSrc} alt="Character background" />
-      </div>
+      {/* Background Image Layer — only shown when custom URL is set */}
+      {bgImageSrc && (
+        <div
+          className="janitor-bg-image-layer"
+          style={{
+            opacity: (settings.bgOpacity ?? 15) / 100,
+            filter: `blur(${settings.bgBlur ?? 0}px)`
+          }}
+        >
+          <img src={bgImageSrc} alt="Background" />
+        </div>
+      )}
 
       {/* Janitor AI Top Header Bar */}
       <header className="janitor-chat-header" onClick={(e) => e.stopPropagation()}>
@@ -557,7 +559,7 @@ export const ChatScreen: React.FC<ChatScreenProps> = ({
           <textarea
             ref={textareaRef}
             className="janitor-textarea"
-            placeholder="Press button to send chat. Enter for linebreak"
+            placeholder="Share what's on your mind... (Enter to send, Shift+Enter for new line)"
             rows={1}
             value={inputText}
             onChange={handleInputChange}

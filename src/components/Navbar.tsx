@@ -1,4 +1,4 @@
-import { Search, Plus, Settings, ShieldAlert, HeartHandshake, Bot, User } from 'lucide-react';
+import { Search, Plus, Settings, HeartHandshake, Brain, User } from 'lucide-react';
 import { Persona } from '../types';
 
 interface NavbarProps {
@@ -28,9 +28,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenCbtTracker,
   onOpenUserPersonaModal,
   userDisplayName,
-  userAvatarUrl,
-  nsfwEnabled,
-  onToggleNsfw,
   hidden = false,
 }) => {
   if (hidden) return null;
@@ -38,17 +35,17 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="navbar">
       <div className="nav-left">
         <div className="nav-brand" onClick={onNavigateExplore} style={{ cursor: 'pointer' }}>
-          <div style={{ background: '#7c3aed', padding: '6px', borderRadius: '8px', display: 'flex', alignItems: 'center' }}>
-            <Bot size={20} color="#fff" />
+          <div style={{ background: '#0f766e', padding: '6px', borderRadius: '8px', display: 'flex', alignItems: 'center' }}>
+            <Brain size={20} color="#fff" />
           </div>
-          <span className="nav-brand-title">COMPANION<span>AI</span></span>
+          <span className="nav-brand-title">MIND<span>SPACE</span></span>
         </div>
 
         <button
           className={`nav-tab-link ${currentView === 'explore' ? 'active' : ''}`}
           onClick={onNavigateExplore}
         >
-          Home
+          Companions
         </button>
       </div>
 
@@ -57,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <Search size={16} color="var(--text-dim)" />
         <input
           type="text"
-          placeholder="Search characters by name, tag, or creator..."
+          placeholder="Search companions by name, specialty, or approach..."
           className="nav-search-input"
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
@@ -66,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       <div className="nav-right">
-        {/* Pure-O ERP Support Log */}
+        {/* CBT/ERP Tracker */}
         <button
           className="nav-btn"
           onClick={onOpenCbtTracker}
@@ -77,32 +74,28 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span className="hidden-sm">ERP Tracker</span>
         </button>
 
-        {/* Create Character Button */}
+        {/* Add Companion Button */}
         <button
           className="nav-btn nav-btn-glow"
           onClick={onOpenCreateModal}
-          title="Create New Character"
+          title="Create New Companion"
         >
           <Plus size={15} />
-          <span className="hidden-sm">Create</span>
+          <span className="hidden-sm">New</span>
         </button>
 
-        {/* User Persona & Profile */}
+        {/* User Profile */}
         <button
           className="nav-btn"
           onClick={onOpenUserPersonaModal}
-          title="User Persona & Appearance"
+          title="Your Profile"
           style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
         >
-          <img
-            src={userAvatarUrl || '/user-avatar.png'}
-            alt="User avatar"
-            style={{ width: '18px', height: '18px', borderRadius: '4px', objectFit: 'cover' }}
-          />
-          <span className="hidden-sm" style={{ fontWeight: 600 }}>{userDisplayName || 'User'}</span>
+          <User size={16} />
+          <span className="hidden-sm" style={{ fontWeight: 600 }}>{userDisplayName || 'Profile'}</span>
         </button>
 
-        {/* Settings (API Keys) */}
+        {/* Settings */}
         <button
           className="nav-btn"
           onClick={onOpenSettingsModal}
