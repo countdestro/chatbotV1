@@ -58,9 +58,9 @@ export function assembleContextPrompt(
     baseSystemPrompt += `\n\n[USER PROFILE: Name is "${userDisplayName}". ${userBio}]`;
   }
 
-  // Enforce rich, immersive, authentic roleplay with natural novelistic flow
+  // Enforce rich, immersive, authentic conversations with natural novelistic flow
   const charName = persona.name || 'Alice';
-  baseSystemPrompt += `\n\n[MANDATORY WRITING DIRECTIVE: IMMERSIVE ROLEPLAY]:
+  baseSystemPrompt += `\n\n[MANDATORY WRITING DIRECTIVE: NATURAL CONVERSATION]:
 
 - NATURAL, IMMERSIVE PACING & LENGTH:
   * Keep responses focused, organic, and conversational (typically 1–3 textured paragraphs combining dialogue, actions, sensory details, and emotions).

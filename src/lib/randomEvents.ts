@@ -1,4 +1,4 @@
-// Simple random event generator for roleplay realism
+// Simple random event generator for conversational realism
 // Returns a short atmospheric or situational event string.
 export const getRandomEvent = (): string => {
   const events = [

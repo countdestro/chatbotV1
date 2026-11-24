@@ -77,16 +77,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span className="hidden-sm">ERP Tracker</span>
         </button>
 
-        {/* 18+ Limitless / SFW Rating Toggle */}
-        <button
-          className={`nav-btn ${nsfwEnabled ? 'tag-pill nsfw-pill active' : ''}`}
-          onClick={onToggleNsfw}
-          title={nsfwEnabled ? 'Limitless Mode (18+) is ON' : 'SFW Mode'}
-        >
-          <ShieldAlert size={15} />
-          <span>{nsfwEnabled ? '18+ Limitless' : 'SFW Only'}</span>
-        </button>
-
         {/* Create Character Button */}
         <button
           className="nav-btn nav-btn-glow"

@@ -1,15 +1,15 @@
 import { ModelOption } from '../types';
 
 export const AVAILABLE_MODELS: ModelOption[] = [
-  // Top-Tier Flagship Roleplay & Intelligence Models (OpenRouter)
+  // Top-Tier Flagship Conversational & Intelligence Models (OpenRouter)
   {
     id: 'deepseek/deepseek-chat',
-    name: 'DeepSeek V3 (Top Realism & Witty RP - Recommended)',
+    name: 'DeepSeek V3 (Top Realism & Conversational Depth)',
     provider: 'openrouter',
     isFree: false,
     isNsfwCapable: true,
     contextWindow: 65536,
-    description: 'Phenomenal natural dialogue, sharp wit, emotional realism, and completely uncensored roleplay at ultra-low cost.'
+    description: 'Phenomenal natural dialogue, sharp wit, emotional realism, and high conversational intelligence.'
   },
   {
     id: 'anthropic/claude-3.5-sonnet',
@@ -22,21 +22,21 @@ export const AVAILABLE_MODELS: ModelOption[] = [
   },
   {
     id: 'sao10k/l3-euryale-70b',
-    name: 'Sao10k L3 Euryale 70B (Community Romance & Storytelling)',
+    name: 'Sao10k L3 Euryale 70B (Creative Storytelling & Romance)',
     provider: 'openrouter',
     isFree: false,
     isNsfwCapable: true,
     contextWindow: 32768,
-    description: 'Specially fine-tuned for rich romance, uncensored physical intimacy, and slow-burn adult storytelling.'
+    description: 'Specially fine-tuned for rich narrative depth, emotional expression, and character dynamics.'
   },
   {
     id: 'cognitivecomputations/dolphin-mistral-24b-venice-edition',
-    name: 'Dolphin Mistral 24B Venice (Uncensored & Active)',
+    name: 'Dolphin Mistral 24B Venice (Fast & Creative)',
     provider: 'openrouter',
     isFree: false,
     isNsfwCapable: true,
     contextWindow: 32768,
-    description: 'Venice uncensored flagship model, exceptional creative roleplay, ERP, and zero-refusal natural dialogue.'
+    description: 'High-speed creative conversational model with natural dialogue and adaptive personality.'
   },
   {
     id: 'meta-llama/llama-3.3-70b-instruct',
@@ -45,7 +45,7 @@ export const AVAILABLE_MODELS: ModelOption[] = [
     isFree: false,
     isNsfwCapable: true,
     contextWindow: 131072,
-    description: 'Flagship open model with 128k context, exceptional ERP/CBT reasoning and high-speed generation.'
+    description: 'Flagship open model with 128k context, strong reasoning and high-speed generation.'
   },
   {
     id: 'deepseek/deepseek-r1',

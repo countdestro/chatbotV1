@@ -19,7 +19,7 @@ function isUUID(str: string): boolean {
 /** Stable UUIDs for bundled personas whose original IDs were slugs (not valid for Supabase). */
 const LEGACY_PERSONA_UUIDS: Record<string, string> = {
   'cbt-specialist-maya': 'a1b2c3d4-e5f6-4a11-8b11-000000000001',
-  'uncensored-nyx-companion': 'a1b2c3d4-e5f6-4a11-8b11-000000000002',
+  'nyx-companion': 'a1b2c3d4-e5f6-4a11-8b11-000000000002',
   'cyberpunk-vesper-hacker': 'a1b2c3d4-e5f6-4a11-8b11-000000000003',
   'elira-arcane-mage': 'a1b2c3d4-e5f6-4a11-8b11-000000000004',
 };

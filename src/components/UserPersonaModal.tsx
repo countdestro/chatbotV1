@@ -117,20 +117,20 @@ export const UserPersonaModal: React.FC<UserPersonaModalProps> = ({
               }}
             />
             <span style={{ fontSize: '0.72rem', color: '#94a3b8', marginTop: '4px', display: 'block' }}>
-              💡 Characters automatically refer to your physical look, height, eyes, hair, and interests during roleplay dialogue and intimate moments.
+              💡 Characters will naturally incorporate your background, interests, and style into conversations.
             </span>
           </div>
 
           {/* Quick Info Tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
             <span style={{ fontSize: '0.72rem', background: 'rgba(168, 85, 247, 0.15)', color: '#d8b4fe', padding: '3px 8px', borderRadius: '6px', border: '1px solid rgba(168, 85, 247, 0.3)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Dumbbell size={12} /> 175cm • Gym Lover
+              <Sparkles size={12} /> Tech & Creative Ideas
             </span>
             <span style={{ fontSize: '0.72rem', background: 'rgba(59, 130, 246, 0.15)', color: '#93c5fd', padding: '3px 8px', borderRadius: '6px', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
-              📐 Math & Chemistry
+              📚 Reading & Learning
             </span>
             <span style={{ fontSize: '0.72rem', background: 'rgba(236, 72, 153, 0.15)', color: '#f472b6', padding: '3px 8px', borderRadius: '6px', border: '1px solid rgba(236, 72, 153, 0.3)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Heart size={12} /> Food & Games
+              <Heart size={12} /> Coffee & Music
             </span>
           </div>
 

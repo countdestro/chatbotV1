@@ -68,7 +68,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               >
                 {AVAILABLE_MODELS.map((m) => (
                   <option key={m.id} value={m.id}>
-                    {m.name} {m.isNsfwCapable ? '🔞' : ''} ({m.provider})
+                    {m.name} ({m.provider})
                   </option>
                 ))}
               </select>
@@ -149,7 +149,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           {/* User Profile Section */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-muted)' }}>
-              3. USER PROFILE IN ROLEPLAY
+              3. USER PROFILE & CONTEXT
             </h3>
 
             <div className="form-group">
@@ -167,7 +167,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <textarea
                 className="form-textarea"
                 rows={2}
-                placeholder="Describe your roleplay persona or background..."
+                placeholder="Describe your background, personality, or interests..."
                 value={formData.userPersonaBio}
                 onChange={(e) => setFormData({ ...formData, userPersonaBio: e.target.value })}
               />
@@ -264,8 +264,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           {/* Toggles */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 0', borderTop: '1px solid var(--border-subtle)' }}>
             <div>
-              <p style={{ fontWeight: 600, fontSize: '0.9rem' }}>Allow 18+ Uncensored Content</p>
-              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Enables uncensored character personas and tags</p>
+              <p style={{ fontWeight: 600, fontSize: '0.9rem' }}>Enable Unfiltered Dynamic Dialogues</p>
+              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Enables complete creative freedom and full conversational range</p>
             </div>
             <input
               type="checkbox"

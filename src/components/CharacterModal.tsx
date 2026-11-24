@@ -28,13 +28,13 @@ export const CharacterModal: React.FC<CharacterModalProps> = ({
       greeting: '*Looks up with a curious expression.*\n\n"Hello! What would you like to talk about today?"',
       description: '',
       scenario: 'A quiet room with ambient lighting.',
-      system_prompt: 'You are an engaging, expressive roleplay companion. Use *actions* and "dialogue".',
+      system_prompt: 'You are an engaging, expressive companion. Use natural narration and dialogue.',
       model_provider: 'openrouter',
       model_name: 'cognitivecomputations/dolphin-mistral-24b-venice-edition',
       temperature: 0.85,
       is_nsfw: false,
       is_cbt: false,
-      tags: ['Roleplay', 'Custom'],
+      tags: ['Companion', 'Custom'],
     }
   );
 
@@ -180,7 +180,7 @@ export const CharacterModal: React.FC<CharacterModalProps> = ({
             <input
               className="form-input"
               type="text"
-              placeholder="RPG, Uncensored, Anime, CBT..."
+              placeholder="Creative, Story, Anime, Assistant..."
               value={tagsInput}
               onChange={(e) => setTagsInput(e.target.value)}
             />
@@ -193,9 +193,9 @@ export const CharacterModal: React.FC<CharacterModalProps> = ({
                 type="checkbox"
                 checked={formData.is_nsfw || false}
                 onChange={(e) => setFormData({ ...formData, is_nsfw: e.target.checked })}
-                style={{ accentColor: 'var(--accent-nsfw)' }}
+                style={{ accentColor: '#a855f7' }}
               />
-              <span style={{ color: '#ff6b8b', fontWeight: 600 }}>🔞 18+ Uncensored Persona</span>
+              <span style={{ color: '#c084fc', fontWeight: 600 }}>✨ Unfiltered Creative Freedom</span>
             </label>
 
             <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer', fontSize: '0.85rem' }}>

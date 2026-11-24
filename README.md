@@ -1,6 +1,6 @@
 # AI Companion — Personal Chatbot Hub
 
-A high-performance, modern AI companion and roleplay web application built with **React 18**, **TypeScript**, **Vite**, and **OpenRouter**. Designed for deeply immersive character roleplay, dynamic mood tracking, long-term memory summarization, and responsive desktop/mobile UX.
+A high-performance, modern AI companion web application built with **React 18**, **TypeScript**, **Vite**, and **OpenRouter**. Designed for engaging interactive conversations, dynamic mood tracking, long-term memory summarization, and responsive desktop/mobile UX.
 
 ---
 
@@ -11,7 +11,7 @@ A high-performance, modern AI companion and roleplay web application built with 
 - **🧠 Dynamic Mood & Emotional Momentum:** Characters have real emotional inertia (playful, tired, annoyed, vulnerable, etc.) that shifts based on context, time of day, and interactions.
 - **📝 Automatic Memory Summarization:** Long conversations are automatically summarized in the background to preserve long-term context without blowing token budgets.
 - **🔄 Multi-Swipe Message Generation:** Reroll assistant responses and swipe between alternative replies at any point in the conversation.
-- **🎨 Custom Chat Backgrounds & Glassmorphism UI:** Janitor-inspired dark theme with customizable background images, opacity sliders, and blur controls.
+- **🎨 Custom Chat Backgrounds & Glassmorphism UI:** Modern dark theme with customizable background images, opacity sliders, and blur controls.
 - **🛡️ Cloud & Local Hybrid Storage:** Full Supabase database integration for sync across devices, with instant offline localStorage fallback.
 
 ---
